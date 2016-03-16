@@ -4,9 +4,14 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import net.hockeyapp.android.*;
+import net.hockeyapp.android.metrics.MetricsManager;
+import net.hockeyapp.android.utils.HockeyLog;
 import net.hockeyapp.android.utils.Util;
 import org.json.JSONArray;
 
@@ -53,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        HockeyLog.setLogLevel(Log.VERBOSE);
+
         // 1. Crash Reporting - forcing a crash
 
         Button crashButton = (Button) findViewById(R.id.crash_button);
@@ -65,7 +72,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 2. Updates, check for updates
+        // 2. Metrics
+
+        MetricsManager.register(this, getApplication());
+
+        Button customEventsButton = (Button) findViewById(R.id.custom_events_button);
+        customEventsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText customEventsEditText = (EditText) findViewById(R.id.custom_event_edit_text);
+                String eventName = customEventsEditText.getText().toString();
+                eventName = TextUtils.isEmpty(eventName) ? "Default event name" : eventName;
+                MetricsManager.trackEvent(eventName);
+            }
+        });
+
+        // 3. Updates, check for updates
 
         Button updateButton = (Button) findViewById(R.id.update_button);
         updateButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // 3.1 Feedback, showing the feedback activity
+        // 4.1 Feedback, showing the feedback activity
 
         Button feedbackButton = (Button) findViewById(R.id.feedback_button);
         feedbackButton.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         FeedbackManager.register(this);
 
-        // 3.2 Feedback, show Screenshot for Feedback action
+        // 4.2 Feedback, show Screenshot for Feedback action
 
         Button feedbackScreenshotButton = (Button) findViewById(R.id.button_feedback_screenshot);
         feedbackScreenshotButton.setOnClickListener(new View.OnClickListener() {
