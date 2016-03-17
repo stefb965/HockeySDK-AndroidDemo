@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import net.hockeyapp.android.*;
 import net.hockeyapp.android.metrics.MetricsManager;
@@ -75,6 +76,21 @@ public class MainActivity extends AppCompatActivity {
         // 2. Metrics
 
         MetricsManager.register(this, getApplication());
+
+        final CheckBox userMetricsEnabledCheckbox = (CheckBox) findViewById(R.id.user_metrics_enabled_checkbox);
+        userMetricsEnabledCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MetricsManager.isUserMetricsEnabled()) {
+                    MetricsManager.disableUserMetrics();
+                } else {
+                    MetricsManager.enableUserMetrics();
+                }
+                userMetricsEnabledCheckbox.setChecked(MetricsManager.isUserMetricsEnabled());
+            }
+        });
+        userMetricsEnabledCheckbox.setChecked(MetricsManager.isUserMetricsEnabled());
+
 
         Button customEventButton = (Button) findViewById(R.id.custom_event_button);
         customEventButton.setOnClickListener(new View.OnClickListener() {
