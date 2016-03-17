@@ -37,7 +37,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/custom_events_button"
+        android:id="@+id/custom_event_button"
         android:text="@string/action_custom_events"
         />
 

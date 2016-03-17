@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
         MetricsManager.register(this, getApplication());
 
-        Button customEventsButton = (Button) findViewById(R.id.custom_events_button);
-        customEventsButton.setOnClickListener(new View.OnClickListener() {
+        Button customEventButton = (Button) findViewById(R.id.custom_event_button);
+        customEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText customEventsEditText = (EditText) findViewById(R.id.custom_event_edit_text);
