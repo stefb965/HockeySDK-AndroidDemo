@@ -28,6 +28,7 @@
     <string name="section_user_metrics">User Metrics</string>
     <string name="action_enable_user_metrics">Enable User Metrics</string>
     <string name="action_send_custom_event">Send custom event</string>
+    <string name="action_send_batch_custom_events">Send 50 demo events</string>
 
 
 </resources>

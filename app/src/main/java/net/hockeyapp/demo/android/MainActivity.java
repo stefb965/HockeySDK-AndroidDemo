@@ -103,6 +103,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button customEventBatchButton = (Button) findViewById(R.id.batch_custom_events_button);
+        customEventBatchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String eventName = "Demo Event";
+                for(int i = 0; i < 50; i++) {
+                    MetricsManager.trackEvent(eventName);
+                }
+            }
+        });
+
         // 3. Updates, check for updates
 
         Button updateButton = (Button) findViewById(R.id.update_button);
