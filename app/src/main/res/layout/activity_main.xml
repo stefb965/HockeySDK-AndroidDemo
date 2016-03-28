@@ -48,6 +48,12 @@
         android:text="@string/action_send_custom_event"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/batch_custom_events_button"
+        android:text="@string/action_send_batch_custom_events"
+        />
 
     <TextView
         android:layout_width="match_parent"
