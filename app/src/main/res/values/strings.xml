@@ -25,10 +25,10 @@
     <string name="ok">OK</string>
     <string name="updates_title">Update available</string>
     <string name="updates_message">An update is available for download.</string>
-    <string name="action_init_metrics">Register MetricsManager</string>
-    <string name="action_disable_metrics">Disable Metrics</string>
-    <string name="action_erable_metrics">Enable Metrics</string>
-    <string name="section_metrics">User Metrics</string>
+    <string name="section_user_metrics">User Metrics</string>
+    <string name="action_enable_user_metrics">Enable User Metrics</string>
+    <string name="action_send_custom_event">Send custom event</string>
+    <string name="action_send_batch_custom_events">Send 50 demo events</string>
 
 
 </resources>
